@@ -358,5 +358,80 @@ for index, value in ipairs(array1) do
 end
 
 
+-- example of coroutine
+
+local co = coroutine.create(function()
+    for i = 1, 5 do
+        print("Coroutine iteration: " .. i)
+        if i == 3 then
+            print("Yielding at iteration " .. i)
+            coroutine.yield() -- Yield control back to the caller
+        end
+    end
+end)    
+
+while coroutine.status(co) ~= "dead" do
+    coroutine.resume(co)
+end
+
+print("Coroutine has finished execution.")
+
+-- while coroutine.status(co) == "dead" do
+--     coroutine.resume(co)
+-- end
 
 
+-- io.output("helloworl.txt")
+
+-- io.write("Hello, World!\n")
+
+-- io.close()
+
+-- os module 
+
+--what is module? 
+--[[A module is a reusable piece of code that encapsulates related functions, variables, 
+and data structures. It allows you to organize your code into separate files or namespaces, 
+making it easier to manage and maintain. Modules can be imported and used in other parts of your program, 
+promoting code reusability and modular design.]]
+
+-- time
+
+print(os.time()) -- Output: current time in seconds since January 1, 1970
+print(os.date()) -- Output: current date and time in a human-readable format
+print(math.random(0,1)) -- Output: a random number between 0 and 1
+print(math.random(1, 100)) -- Output: a random integer between 1 and
+
+-- march 3 2000 to now
+local past = os.time{year=2000, month=3, day=3}
+local now = os.time()
+local difference = os.difftime(now, past)
+
+--convert to date format "mm/dd/yy"
+local dateFormat = os.date("%m/%d/%Y", past)
+
+--how to convert seconds to date format
+-- local days = math.floor(difference / (24 * 3600))
+-- local hours = math.floor((difference % (24 * 3600)) / 3600)
+-- local minutes = math.floor((difference % 3600) / 60)
+-- local seconds = difference % 60
+-- local dateConvert = {
+--     days = days,
+--     hours = hours,
+--     minutes = minutes,
+--     seconds = seconds
+-- }
+-- print("Difference in days: " .. dateConvert.days)
+-- print("Difference in hours: " .. dateConvert.hours)
+-- print("Difference in minutes: " .. dateConvert.minutes)
+-- print("Difference in seconds: " .. dateConvert.seconds)
+
+
+
+-- os.execute("echo Hello, World!") -- Executes a shell command and prints "Hello, World!" to the console
+-- os.execute("mkdir test_directory") -- Creates a new directory named "test_directory" in the current working directory
+
+-- os.execute("rm -rf test_directory") -- Deletes the "test_directory" and its contents
+
+
+-- creating a custom module
