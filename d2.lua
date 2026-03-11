@@ -101,3 +101,27 @@ local ans = tb1 + tb2
 print(ans) -- Output: 15
 
 
+function printHelloPerson(name)
+    print("Hello, " .. name .. "!")
+end
+
+printHelloPerson("Alice") -- Output: Hello, Alice!
+printHelloPerson("Bob") -- Output: Hello, Bob!
+
+-- function inside function
+function outerFunction()
+    print("This is the outer function.")
+
+    local function innerFunction()
+        local messageScope = "This is a message from the inner function."
+        print("This is the inner function. " .. messageScope)
+    end
+
+    print(messageScope or "Error: messageScope is not defined.")
+    innerFunction() -- Call the inner function
+end
+
+outerFunction()
+
+
+
